@@ -280,4 +280,21 @@ fas_data %>%
   geom_violin() + 
   facet_grid(day_of_tx ~ outcome)
 ```
+```{r}
+weather_df %>% 
+  filter(name =="CentralPark_NY") %>% 
+  mutate(
+   tmax_fahr = tmax*(9/5)+32,
+   tmin_fahr = tmin*(9/5)+32,
+ 
+  ) %>% 
+  ggplot(aes(x= tmax_fahr, y = tmin_fahr))+
+    geom_point(alpha = .5)+
+  geom_smooth(method = "lm",se = FALSE)
+```
+```{r}
+ggplot(weather_df) + geom_point(aes(x = tmax, y = tmin), color = "blue")
+ggplot(weather_df) + geom_point(aes(x = tmax, y = tmin, color = "blue"))
+```
+
 
